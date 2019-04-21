@@ -1,0 +1,49 @@
+#main{
+    text-align: center;
+    width: 500px;
+    height:800px;
+    border: 1px solid black;
+    padding:40px;
+    margin-left:100px; 
+}
+
+
+
+svg text{
+    font-size: 25px;
+}
+#input{
+  padding-top: 20px;
+
+text-align: center;
+width: 500px;
+height:200px;
+border: 1px solid black;
+}
+
+#dname{
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+#dsave{
+    padding-top: 35px;
+    border-radius: 30%;
+}
+#datax input{
+    border: 0;
+    width: 100%;
+    text-align: center;
+    ;
+}
+#datax tr:nth-child(even){
+    background-color:aquamarine;
+}
+tr button{
+
+width: 100%;
+border: 0;
+}
+#datax tr:nth-child(even) input{
+    background-color:aquamarine;
+
+}
