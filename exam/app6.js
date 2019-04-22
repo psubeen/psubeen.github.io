@@ -101,8 +101,9 @@ function sort_name(){
         if(x>y){return 1;}
         return 0;
     });
-    showData();
+  
 }
+      showData();
 }
 function sort_price(){
     if(sortingPRICE==1){
