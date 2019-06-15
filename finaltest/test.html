@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html> 
+<head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+  <title>Google Maps Multiple Markers</title> 
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyA-j8MHxFtkFEaJxBZO8GOvy2jGF0vroco" ></script>
+   <link rel="stylesheet" href="style.css">
+</script>
+</head> 
+<body>
+<h1>수원대학교 둘러보기</h1>
+    <select id="place" name="place">
+        <option value=0>종합강의동</option>
+        <option value=1>미술대학</option>
+        <option value=2>경상대학</option>
+        <option value=3>법정대학</option>
+        <option value=4>it대학</option>
+        <option value=5>생활과학대학</option>
+        <option value=6>음악대학</option>
+        <option value=7>체육대학</option>
+        <option value=8>인문대학</option>
+    </select>
+    <input type="submit" value=go onclick="goPOST()">
+    <input type="reset" value=reset onclick="goRESET()">
+  <div id="map" style="width: 500px; height: 400px;"></div>
+  
+ 
+  <div id="intro" >
+    
+</div>
+
+  <script type="text/javascript">
+    var locations = [
+      ['종합강의동', 37.209086, 126.978699],
+      ['미술대학', 37.208023, 126.977729],
+      ['경상대학', 37.206173, 126.976189],
+      ['법정대학', 37.209159, 126.972879],
+      ['it대학', 37.210270, 126.975213],
+      ['생활과학대학',37.209296, 126.974703],
+      ['음악대학',37.210086, 126.972498],
+      ['체육대학',37.212076, 126.979008],
+      ['인문대학',37.213464, 126.979046]
+
+    ];
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 15,
+      center: new google.maps.LatLng(37.209018, 126.976393),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+    for (i = 0; i < locations.length; i++) {  
+      marker = new google.maps.Marker({
+        id:i,
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+      if(marker)
+      {
+        marker.addListener('click', function() {
+          map.setZoom(18);
+          map.setCenter(this.getPosition());
+        });
+        }
+    }
+ function goRESET(){
+    marker = new google.maps.Marker({
+        id:i,
+        position: new google.maps.LatLng(37.209018, 126.976393),
+        map: map
+      });
+    
+        infowindow.setContent("수원대학교");
+          infowindow.open(map, marker);
+          map.setZoom(15);
+          map.setCenter(37.209018, 126.976393);
+
+      document.getElementById('intro').innerHTML="";
+
+ }
+    function goPOST(){
+        var place=document.getElementById("place");
+        var index=place.options[place.selectedIndex].value;
+        console.log(index);
+        marker = new google.maps.Marker({
+        id:i,
+        position: new google.maps.LatLng(locations[index][1], locations[index][2]),
+        map: map
+      });
+    
+        infowindow.setContent(locations[index][0]);
+          infowindow.open(map, marker);
+          map.setZoom(18);
+          map.setCenter(locations[index][1],locations[index][2]);
+          switch(index){
+        case '0':document.getElementById('intro').innerHTML="주소:경기도 화성시 봉담읍 와우안길 17 <br>연락처 : 031-220-2114 <br>창립: 1977년 8월<br> 학생수 : 11,173 <br>홈페이지 : http://ic.suwon.ac.kr/"
+                break;
+        case '1':document.getElementById('intro').innerHTML="성명 : 김화숙 <br>소속 : 성악과 <br>위치 : 음악대학 203호<br> 대표전화 : 031-220-8121 <br>홈페이지 : http://ic.suwon.ac.kr/"
+                break; 
+        case '2':document.getElementById('intro').innerHTML="성명 : 이상규 <br>소속 : 경제학부 경제학 <br>위치 : 경상대학 301호<br> 대표전화 : 031-220-2457 <br>홈페이지 : http://ic.suwon.ac.kr/"
+                break;  
+        case '3':document.getElementById('intro').innerHTML="성명 : 김옥순 <br>소속 : 국제대학 <br>위치 : 국제대학 304호<br> 대표전화 : 031-220-2633 <br>홈페이지 : http://ic.suwon.ac.kr/"
+                break;  
+        case '4':document.getElementById('intro').innerHTML="성명 : 장성태 <br>소속 : 컴퓨터학부 <br>위치 : it대학 209호<br> 대표전화 : 031-220-8221 <br>홈페이지 : http://ic.suwon.ac.kr/"
+                break;
+        case '5':document.getElementById('intro').innerHTML="성명 : 박군열 <br>소속 : 스포츠과학부 <br>위치 : 건강과학대학 218호<br> 대표전화 : 031-220-2313 <br>홈페이지 : http://ic.suwon.ac.kr/"
+                break;   
+        case '6':document.getElementById('intro').innerHTML="성명 : 박유림 <br>소속 : 음악과 <br>위치 : 음악대학 203호<br> 대표전화 : 031-220-5321 <br>홈페이지 : http://ic.suwon.ac.kr/"
+                break;  
+        case '7':document.getElementById('intro').innerHTML="성명 : 김은희 <br>소속 : 체육과 <br>위치 : 체육대학 323호<br> 대표전화 : 031-220-1221 <br>홈페이지 : http://ic.suwon.ac.kr/"
+                break;
+        case '8':document.getElementById('intro').innerHTML="성명 : 박수빈 <br>소속 : 인문과 <br>위치 : 인문대학 413호<br> 대표전화 : 031-220-8231 <br>홈페이지 : http://ic.suwon.ac.kr/"
+                break;     
+
+    
+            
+
+
+
+            
+
+      }
+
+    }
+    function goSERACH(){
+        var place=document.getElementById("place");
+        var index=place.options[place.selectedIndex].value;
+        switch(index){
+        case '0':window.open('http://www.suwon.ac.kr/ ', 'newWindow');
+                break;
+        case '1':document.getElementById('intro').innerHTML="성명 : 김화숙 <br>소속 : 성악과 <br>위치 : 음악대학 203호<br> 대표전화 : 031-220-8121 <br>홈페이지 : http://ic.suwon.ac.kr/"
+                break; 
+        case '2':document.getElementById('intro').innerHTML="성명 : 이상규 <br>소속 : 경제학부 경제학 <br>위치 : 경상대학 301호<br> 대표전화 : 031-220-2457 <br>홈페이지 : http://ic.suwon.ac.kr/"
+                break;  
+        case '3':document.getElementById('intro').innerHTML="성명 : 김옥순 <br>소속 : 국제대학 <br>위치 : 국제대학 304호<br> 대표전화 : 031-220-2633 <br>홈페이지 : http://ic.suwon.ac.kr/"
+                break;  
+        case '4':document.getElementById('intro').innerHTML="성명 : 장성태 <br>소속 : 컴퓨터학부 <br>위치 : it대학 209호<br> 대표전화 : 031-220-8221 <br>홈페이지 : http://ic.suwon.ac.kr/"
+                break;
+        case '5':document.getElementById('intro').innerHTML="성명 : 김화숙 <br>소속 : 스포츠과학부 <br>위치 : 건강과학대학 218호<br> 대표전화 : 031-220-2313 <br>홈페이지 : http://ic.suwon.ac.kr/"
+                break;   
+        case '6':document.getElementById('intro').innerHTML="성명 : 김화숙 <br>소속 : 성악과 <br>위치 : 음악대학 203호<br> 대표전화 : 031-220-8121 <br>홈페이지 : http://ic.suwon.ac.kr/"
+                break;  
+        case '7':document.getElementById('intro').innerHTML="성명 : 김화숙 <br>소속 : 성악과 <br>위치 : 음악대학 203호<br> 대표전화 : 031-220-8121 <br>홈페이지 : http://ic.suwon.ac.kr/"
+                break;
+        case '8':document.getElementById('intro').innerHTML="성명 : 김화숙 <br>소속 : 성악과 <br>위치 : 음악대학 203호<br> 대표전화 : 031-220-8121 <br>홈페이지 : http://ic.suwon.ac.kr/"
+                break;     
+
+    
+            
+
+
+
+            
+
+      }
+            
+
+      
+        
+    }
+ 
+  </script>
+</body>
+</html>
