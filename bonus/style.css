@@ -1,0 +1,48 @@
+#intro{
+    width: 100%;
+    height: 300px;
+    float: left;
+    background-color: antiquewhite;
+}
+#my_image{
+ 
+    width: 300px;
+    height: 300px;
+    font-style: italic;
+    font-size: 20px;
+    float: left
+
+}
+#about{
+
+    font-size: 20px;
+}
+#right{
+    float: left;
+}
+#index{
+    width: 1000px;
+    height: 700px;
+    background-color: aqua;
+}
+img{
+    border-radius: 45%;
+}
+
+#menu {
+    list-style-type: none;
+    float: left;
+
+}
+#menu ul{
+    list-style-type: none;
+}
+#menu ul li{
+    padding: 15px;
+    font-style: initial;
+}
+#menu button{
+    width: 100%;
+    background-color: antiquewhite;
+    color: black;
+}

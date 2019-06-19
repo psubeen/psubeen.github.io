@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app6.js"></script>
+</head>
+<body>
+  <div id="main">
+    <div id="tag_svg">
+    <svg width="50" height="50">
+        <rect width="50" height="50" 
+        style="fill:white;stroke-width:3;stroke:rgb(0,0,0)" />
+        <text x="10" y="30" fill="black">박</text>
+      </svg>
+      <svg width="50" height="50">
+        <rect width="50" height="50" 
+        style="fill:white;stroke-width:3;stroke:rgb(0,0,0)" />
+        <text x="10" y="30" fill="black">수</text>
+      </svg>
+      <svg width="50" height="50">
+        <rect width="50" height="50" 
+        style="fill:white;stroke-width:3;stroke:rgb(0,0,0)" />
+        <text x="10" y="30" fill="black">빈</text>
+      </svg>
+      <p>Suwon University</p>
+    </div>
+    <h1>Product Information</h1>
+    
+        <div id="input">
+           <div id="dname">Name <input id="name" type="text"></div> 
+           <div id="dprice">price <input id="price" type="text"></div> 
+            <div id="dsave"><button id="save">Save</button></div>
+        </br>
+        
+      </div>
+        <table width="100%" border="1">
+        </br>
+          <thead>  
+          <tr>
+                <th><button id="b_id">▼ ID</button></th>
+                <th><button id="b_name">▼ NAME</button></th>
+                <th><button id="b_price">▼ PRICE</button></th>
+          </tr>
+          </thead>
+            <tbody id="datax" onkeydown="insert(event)">
+
+            </tbody>
+        </table>
+        <br>
+      <div id="bottom">&copy; 2019 박수빈</div> 
+
+      </div>
+
+
+
+</body>
+</html>
